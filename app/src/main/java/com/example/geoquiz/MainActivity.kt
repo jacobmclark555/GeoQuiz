@@ -14,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.example.geoquiz.databinding.ActivityMainBinding
 //import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
@@ -60,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         binding.nextButton.setOnClickListener {
             quizViewModel.currentIndex = (quizViewModel.currentIndex + 1)
             if (quizViewModel.currentIndex >= quizViewModel.questionBank.size) {
+                binding.cheatButton.visibility = View.GONE
+                binding.trueButton.visibility = View.GONE
+                binding.falseButton.visibility = View.GONE
                 showScore()
             } else {
                 updateQuestion()
